@@ -1,0 +1,10 @@
+{
+  "Post": {
+    "id": {"int": {} },
+    "nombre": {"string": {} },
+    "fecha": {"DateTime": {} },
+    "descripcion": {"string": {} },
+    "estatusId": {"int": {} },
+    "estatus": {"string": {}}
+  }
+}
