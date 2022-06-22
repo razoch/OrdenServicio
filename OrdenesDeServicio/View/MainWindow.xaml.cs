@@ -1,19 +1,8 @@
 ﻿using OrdenesDeServicio.ViewModel;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Threading;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Net.Http;
 
 namespace OrdenesDeServicio.View
@@ -23,19 +12,18 @@ namespace OrdenesDeServicio.View
     /// </summary>
     public partial class MainWindow : Window
     {
-        public ViewModelBase ViewModel { get; private set; }
         public MainWindow()
         {
             InitializeComponent();
-            //ViewModel = new ViewModelBase();
-            //DataContext = ViewModel;
             this.DataContext = new OrdenViewModel();
-            
         }
 
         private void ButtonEnviar_Click(object sender, RoutedEventArgs e)
         {
-            EnviarOrdenes();
+            if(DataGridOrdenes.Items.Count >= 1)
+                EnviarOrdenes();
+            else
+                MessageBox.Show("No hay datos para realizar el envío.");
         }
 
         private Task EnviarOrdenes()
@@ -44,7 +32,7 @@ namespace OrdenesDeServicio.View
             {
                 try
                 {
-                    string url = "https://jsonplaceholder.typicode.com/posts";
+                    string url = "https://my-json-server.typicode.com/razoch/ordenServicio/Post";
                     var cliente = new HttpClient();
                     Valores datos = new Valores();
                     string contenido = datos.Cargar();
@@ -54,12 +42,22 @@ namespace OrdenesDeServicio.View
                     if (httpResponse.IsSuccessStatusCode)
                     {
                         string result = await httpResponse.Content.ReadAsStringAsync();
+                        //write string to file
+                        System.IO.File.WriteAllText(@"C:\shared\jsonFile.txt", result);
+                        //Limpia la Base de datos
+                        datos.LimpiaRegistros();
+                        
                     }
                         
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error en método EnviarOrdenes: " + ex.Message);
+                }
+                finally
+                {
+                    MessageBox.Show("Las órdenes fueron guardadas con éxito");
+                    DataGridOrdenes.Items.Refresh();
                 }
             });
         }

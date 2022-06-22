@@ -55,11 +55,29 @@ namespace OrdenesDeServicio.ViewModel
             }
             return resultado;
         }
-    }
-   
-    public class Basededatos<T>
-    {
-        public List<T> valores = new List<T>();
-        
-    }
+
+        public void LimpiaRegistros()
+        {
+            try
+            {
+                string query = "EXEC spEliminaRegistros";
+                using (SqlConnection conn = new SqlConnection(Properties.Settings.Default.Conexion))
+                {
+                    if (conn != null)
+                    {
+                        conn.Open();
+                        using (SqlCommand cmd = new SqlCommand(query, conn))
+                        {
+                            cmd.ExecuteNonQuery();
+                            conn.Close();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al eliminar los registros de la tabla orderServicio: " + ex.Message);
+            }
+        }
+    }  
 }

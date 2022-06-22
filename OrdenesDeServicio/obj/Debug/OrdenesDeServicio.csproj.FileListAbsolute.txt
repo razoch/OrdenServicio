@@ -18,7 +18,6 @@ C:\Users\crazo\source\repos\OrdenesDeServicio\OrdenesDeServicio\obj\Debug\Ordene
 C:\Users\crazo\source\repos\OrdenesDeServicio\OrdenesDeServicio\obj\Debug\OrdenesDeServicio.exe
 C:\Users\crazo\source\repos\OrdenesDeServicio\OrdenesDeServicio\obj\Debug\OrdenesDeServicio.pdb
 C:\Users\crazo\source\repos\OrdenesDeServicio\OrdenesDeServicio\obj\Debug\OrdenesDeServicio_MarkupCompile.lref
-C:\Users\crazo\source\repos\OrdenesDeServicio\OrdenesDeServicio\obj\Debug\OrdenesDeServicio.csprojAssemblyReference.cache
 C:\Users\crazo\source\repos\OrdenesDeServicio\OrdenesDeServicio\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\crazo\source\repos\OrdenesDeServicio\OrdenesDeServicio\bin\Debug\System.Buffers.dll
 C:\Users\crazo\source\repos\OrdenesDeServicio\OrdenesDeServicio\bin\Debug\System.Memory.dll

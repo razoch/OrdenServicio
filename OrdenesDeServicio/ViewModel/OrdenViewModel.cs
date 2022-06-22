@@ -98,17 +98,17 @@ namespace OrdenesDeServicio.ViewModel
         }
         public void DeleteData(int id)
         {
-            if (MessageBox.Show("Confirm delete of this record?", "Student", MessageBoxButton.YesNo)
+            if (MessageBox.Show("Desea eliminar este registro?", "Orden", MessageBoxButton.YesNo)
                 == MessageBoxResult.Yes)
             {
                 try
                 {
                     _repository.RemoveOrden(id);
-                    MessageBox.Show("Record successfully deleted.");
+                    MessageBox.Show("La orden se ha eliminado con éxito.");
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error occured while saving. " + ex.InnerException);
+                    MessageBox.Show("Ha ocurrido un error durante el borrado. " + ex.InnerException);
                 }
                 finally
                 {
@@ -130,18 +130,18 @@ namespace OrdenesDeServicio.ViewModel
                     if (OrdenRecord.id <= 0)
                     {
                         _repository.AddOrden(_ordenEntity);
-                        MessageBox.Show("New record successfully saved.");
+                        MessageBox.Show("Nueva orden guardada con éxito.");
                     }
                     else
                     {
                         _ordenEntity.id = OrdenRecord.id;
                         _repository.UpdateOrden(_ordenEntity);
-                        MessageBox.Show("Record successfully updated.");
+                        MessageBox.Show("Orden actualizada correctamente.");
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error occured while saving. " + ex.InnerException);
+                    MessageBox.Show("Ha ocurrido un error al guardar. " + ex.InnerException);
                 }
                 finally
                 {

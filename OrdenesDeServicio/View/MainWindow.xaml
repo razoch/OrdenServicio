@@ -54,7 +54,7 @@
         </StackPanel>
         <StackPanel Height="210">
             <DataGrid x:Name="DataGridOrdenes" AutoGenerateColumns="False"
-                      ItemsSource="{Binding OrdenRecord.ordenRecords}" CanUserAddRows="False" Height="200" Margin="10">
+                      ItemsSource="{Binding Path=OrdenRecord.ordenRecords ,Mode=twoWay}" CanUserAddRows="False" Height="200" Margin="10">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Nombre" Binding="{Binding Path=id}" Visibility="Hidden"/>
                     <DataGridTextColumn Header="Nombre" Binding="{Binding Path=nombre}" Width="100"  IsReadOnly="True"/>
